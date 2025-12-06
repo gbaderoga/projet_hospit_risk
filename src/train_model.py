@@ -49,8 +49,6 @@ def build_preprocessor():
 
     numeric_transformer = Pipeline(steps=[("scaler", StandardScaler())])
 
-    # 🔴 AVANT : categorical_transformer = "passthrough"
-    # ✅ MAINTENANT : OneHotEncoder
     categorical_transformer = OneHotEncoder(handle_unknown="ignore")
 
     preprocessor = ColumnTransformer(
@@ -151,7 +149,7 @@ def train_and_evaluate():
     Path("models").mkdir(exist_ok=True)
     joblib.dump(logreg_clf, "models/logreg_hospit.pkl")
     joblib.dump(rf_clf, "models/rf_hospit.pkl")
-    print("\n✅ Modèles sauvegardés dans le dossier 'models/'.")
+    print("\n Modèles sauvegardés dans le dossier 'models/'.")
 
 
 if __name__ == "__main__":
